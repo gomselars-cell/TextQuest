@@ -10,6 +10,6 @@ namespace TextQuestGame.Model
         public string Id { get; set; }
         public string Text { get; set; }
         public List<Choice> Choices { get; set; } = new List<Choice>();
-
+        public string ImagePath { get; set; } // Добавлено в день 2
     }
 }

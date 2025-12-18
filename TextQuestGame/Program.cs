@@ -11,11 +11,11 @@ namespace TextQuestGame
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var form = new MainForm();
-            var game = new GameService();
-            var presenter = new GamePresenter(form, game);
-
-            Application.Run(form);
+            // »спользуем ApplicationController дл€ управлени€ жизненным циклом
+            using (var appController = new ApplicationController())
+            {
+                appController.Start();
+            }
         }
     }
 }

@@ -1,0 +1,186 @@
+﻿[
+	{
+		"Id": "start",
+		"Text": "Вы стоите в тёмной комнате. Перед вами две двери: левая и правая. На полу лежит старый фонарик.",
+		"ImagePath": "Images/default.jpg",
+		"Choices": [
+			{
+				"Text": "Взять фонарик и пойти налево",
+				"NextSceneId": "left_room",
+				"Condition": "",
+				"Effect": "AddItem:Фонарик"
+			},
+			{
+				"Text": "Взять фонарик и пойти направо",
+				"NextSceneId": "right_room",
+				"Condition": "",
+				"Effect": "AddItem:Фонарик"
+			},
+			{
+				"Text": "Проигнорировать фонарик и осмотреться",
+				"NextSceneId": "look_around",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "left_room",
+		"Text": "Вы вошли в библиотеку. На столе лежит древняя книга и блестящий ключ.",
+		"ImagePath": "Images/default.jpg",
+		"Choices": [
+			{
+				"Text": "Взять книгу",
+				"NextSceneId": "book_taken",
+				"Condition": "",
+				"Effect": "AddItem:Древняя книга"
+			},
+			{
+				"Text": "Взять ключ",
+				"NextSceneId": "key_taken",
+				"Condition": "",
+				"Effect": "AddItem:Ключ"
+			},
+			{
+				"Text": "Вернуться обратно",
+				"NextSceneId": "start",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "right_room",
+		"Text": "Комната заперта. На двери висит большой замок.",
+		"ImagePath": "Images/default.jpg",
+		"Choices": [
+			{
+				"Text": "Попытаться открыть дверь",
+				"NextSceneId": "door_locked",
+				"Condition": "",
+				"Effect": ""
+			},
+			{
+				"Text": "Использовать ключ",
+				"NextSceneId": "secret_room",
+				"Condition": "HasItem:Ключ",
+				"Effect": "RemoveItem:Ключ"
+			},
+			{
+				"Text": "Вернуться обратно",
+				"NextSceneId": "start",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "book_taken",
+		"Text": "Вы взяли древнюю книгу. Она тяжелая и выглядит ценной.",
+		"ImagePath": "Images/default.jpg",
+		"Choices": [
+			{
+				"Text": "Вернуться обратно",
+				"NextSceneId": "left_room",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "key_taken",
+		"Text": "Вы взяли блестящий ключ. Он может пригодиться для открытия дверей.",
+		"ImagePath": "Images/key.jpg",
+		"Choices": [
+			{
+				"Text": "Вернуться обратно",
+				"NextSceneId": "left_room",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "door_locked",
+		"Text": "Дверь не поддается. Вам нужен ключ.",
+		"ImagePath": "Images/default.jpg",
+		"Choices": [
+			{
+				"Text": "Вернуться обратно",
+				"NextSceneId": "right_room",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "secret_room",
+		"Text": "Вы открыли дверь ключом! Перед вами комната с сокровищами!",
+		"ImagePath": "Images/treasure_room.jpg",
+		"Choices": [
+			{
+				"Text": "Взять сокровища",
+				"NextSceneId": "victory",
+				"Condition": "",
+				"Effect": "AddItem:Сокровище;SetVariable:money:1000"
+			}
+		]
+	},
+	{
+		"Id": "look_around",
+		"Text": "Вы осмотрелись и заметили потайную дверь в стене.",
+		"ImagePath": "Images/default.jpg",
+		"Choices": [
+			{
+				"Text": "Открыть потайную дверь",
+				"NextSceneId": "hidden_room",
+				"Condition": "",
+				"Effect": ""
+			},
+			{
+				"Text": "Вернуться к дверям",
+				"NextSceneId": "start",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "hidden_room",
+		"Text": "Вы нашли скрытую комнату! Здесь лежат старинные свитки.",
+		"ImagePath": "Images/default.jpg",
+		"Choices": [
+			{
+				"Text": "Взять свитки",
+				"NextSceneId": "scrolls_taken",
+				"Condition": "",
+				"Effect": "AddItem:Старинные свитки"
+			},
+			{
+				"Text": "Вернуться обратно",
+				"NextSceneId": "look_around",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "scrolls_taken",
+		"Text": "Вы взяли старинные свитки. Возможно, они содержат секреты этого места.",
+		"ImagePath": "Images/default.jpg",
+		"Choices": [
+			{
+				"Text": "Вернуться обратно",
+				"NextSceneId": "hidden_room",
+				"Condition": "",
+				"Effect": ""
+			}
+		]
+	},
+	{
+		"Id": "victory",
+		"Text": "ПОЗДРАВЛЯЕМ! Вы нашли сокровища и победили в игре!",
+		"ImagePath": "Images/default.jpg",
+		"Choices": []
+	}
+]
